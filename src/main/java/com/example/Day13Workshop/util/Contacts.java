@@ -51,12 +51,12 @@ public class Contacts {
         String[] optValuesArr = optValues.toArray(new String[optValues.size()]);
         Contact cResp = new Contact();
         try{
-            Path filePath = new File(optValuesArr[0]+ '/'+ contactId).toPath();
+            Path filePath = new File(optValuesArr[0]+ "/" + contactId).toPath();
             Charset charset = Charset.forName("utf-8");
             List<String> stringList = Files.readAllLines(filePath, charset);
             cResp.setName(stringList.get(0));
             cResp.setEmail(stringList.get(1));
-            cResp.setPhoneNumber(Integer.valueOf(stringList.get(2)));
+            cResp.setPhoneNumber(Integer.parseInt(stringList.get(2)));
         } catch(IOException e){
             logger.error(e.getMessage());
         }
